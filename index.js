@@ -245,7 +245,7 @@ const addEmp = () => {
 //define function to update an employee
 const updateEmp = () => {
     connection.query(
-        'SELECT CONCAT(employee.first_name, " ",employee.last_name) AS full_name, employee.id, roles.* FROM employee CROSS JOIN roles on employee.role_id = roles.id',
+        'SELECT CONCAT(employee.first_name, " ",employee.last_name) AS full_name, employee.id, roles.* FROM employee RIGHT JOIN roles on employee.role_id = roles.id',
         function (err, res) {
             if (err) throw err;
 
