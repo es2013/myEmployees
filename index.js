@@ -245,20 +245,21 @@ const addEmp = () => {
 //define function to update an employee
 const updateEmp = () => {
     connection.query(
-        'SELECT CONCAT(employee.first_name, " ",employee.last_name) AS full_name, employee.id, roles.* FROM employee RIGHT JOIN roles on employee.role_id = roles.id',
+        'SELECT CONCAT(employee.first_name, " ",employee.last_name) AS full_name, employee.id as empl_id, roles.* FROM employee RIGHT JOIN roles on employee.role_id = roles.id',
         function (err, res) {
             if (err) throw err;
 
             let employeeList = res.map(employee => ({
                 full_name: employee.full_name,
-                id:employee.id,
-                value:[employee.full_name, employee.id]
+                id:employee.empl_id,
+                value:[employee.full_name, employee.empl_id]
             }))
             let roleList = res.map (roles => ({
                 title: roles.title,
                 id: roles.id,
                 value:[roles.title,roles.id]
             }));
+            console.log(employeeList)
             inquirer.prompt([{
                 type:'list',
                 name:'employee',
@@ -277,6 +278,7 @@ const updateEmp = () => {
               let newRoleId = answer.newRole[1];
               console.log(editID);
               console.log(newRoleId);
+              console.log(answer);
               connection.query(`UPDATE employee SET role_id=${newRoleId} WHERE id=${editID};`,
               function(err, res) {
                   if(err){
