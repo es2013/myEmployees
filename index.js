@@ -276,9 +276,9 @@ const updateEmp = () => {
             .then((answer) => {
               let editID = answer.employee[1];
               let newRoleId = answer.newRole[1];
-              console.log(editID);
-              console.log(newRoleId);
-              console.log(answer);
+            //   console.log(editID);
+            //   console.log(newRoleId);
+            //   console.log(answer);
               connection.query(`UPDATE employee SET role_id=${newRoleId} WHERE id=${editID};`,
               function(err, res) {
                   if(err){
@@ -323,9 +323,7 @@ const deleteEmp = () => {
         }
         ])
             .then((answer) => {
-                console.log(answer.employee[1]);
                 deleteID = answer.employee[1];
-                console.log(deleteID)
                 connection.query(`DELETE FROM employee WHERE id = ${deleteID};`,
                     function (err, res) {
                         if (err) {
