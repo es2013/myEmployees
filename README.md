@@ -24,7 +24,7 @@ console.table
 ![Add New Value](./img/add_department.png)
 
 ## Demo Video
-watch this quick demo
+[watch this quick demo](https://drive.google.com/file/d/1P_KbU4djbUvtXJno0rXHmFRUaKFc5Eco/view)
 
 
 
